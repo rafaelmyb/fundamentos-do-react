@@ -5,9 +5,9 @@ import Header from './Header';
 
 function App() {
   const [posts, setPosts] = useState([
-    { id: Math.random(), title: 'Titulo 01', subtitle: 'Subtitulo 01', likes: 20 },
-    { id: Math.random(), title: 'Titulo 02', subtitle: 'Subtitulo 02', likes: 10 },
-    { id: Math.random(), title: 'Titulo 03', subtitle: 'Subtitulo 02', likes: 50 },
+    { id: Math.random(), title: 'Titulo 01', subtitle: 'Subtitulo 01', likes: 20, read: false },
+    { id: Math.random(), title: 'Titulo 02', subtitle: 'Subtitulo 02', likes: 10, read: true },
+    { id: Math.random(), title: 'Titulo 03', subtitle: 'Subtitulo 02', likes: 50, read: false },
   ]);
 
   function handleRefresh() {
@@ -18,6 +18,7 @@ function App() {
         title: prevState.length < 9 ? `Titulo 0${prevState.length + 1}` : `Titulo ${prevState.length + 1}`,
         subtitle: prevState.length < 9 ? `Subtitulo 0${prevState.length + 1}` : `Subtitulo ${prevState.length + 1}`,
         likes: prevState.length * 2 + 50,
+        read: (Math.random() * 10) > 5 ? true : false,
       },
     ]);
   };
@@ -42,13 +43,8 @@ function App() {
       {posts.map(post => (
         <Post
           key={post.id}
-          likes={post.likes}
           onRemove={handleRemovePost}
-          post={{
-            id: post.id,
-            title: post.title,
-            subtitle: post.subtitle,
-          }}
+          post={post}
         />
       ))}
     </>
