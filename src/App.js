@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import Post from './Post';
 import Header from './Header';
+import Button from './Button';
+import { ThemeProvider } from './ThemeProvider';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -30,11 +32,11 @@ function App() {
   }
 
   return (
-    <>
-      <Header title="JStack's Blog">
+    <ThemeProvider>
+      <Header>
         <h2>
           Posts da semana
-          <button onClick={handleRefresh}>Atualizar</button>
+          <Button onClick={handleRefresh}>Atualizar</Button>
         </h2>
       </Header>
 
@@ -47,7 +49,7 @@ function App() {
           post={post}
         />
       ))}
-    </>
+    </ThemeProvider>
 	)
 }
 
