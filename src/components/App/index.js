@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
-import Post from './Post';
-import Header from './Header';
-import Button from './Button';
-import { ThemeProvider } from './ThemeProvider';
+import Post from '../Post';
+import Header from '../Header';
+import Button from '../Button';
+import { ThemeProvider } from '../../context/ThemeProvider';
 
 function App() {
   const [posts, setPosts] = useState([
-    { id: Math.random(), title: 'Titulo 01', subtitle: 'Subtitulo 01', likes: 20, read: false },
-    { id: Math.random(), title: 'Titulo 02', subtitle: 'Subtitulo 02', likes: 10, read: true },
-    { id: Math.random(), title: 'Titulo 03', subtitle: 'Subtitulo 02', likes: 50, read: false },
+    { id: Math.random(), title: 'Titulo 01', subtitle: 'Subtitulo 01', likes: 20, read: false, removed: false },
+    { id: Math.random(), title: 'Titulo 02', subtitle: 'Subtitulo 02', likes: 10, read: true, removed: false },
+    { id: Math.random(), title: 'Titulo 03', subtitle: 'Subtitulo 02', likes: 50, read: false, removed: false },
   ]);
 
   function handleRefresh() {
@@ -26,8 +26,12 @@ function App() {
   };
 
   function handleRemovePost(postId) {
-    setPosts((prevState) => (
-      prevState.filter(post => post.id !== postId)
+    setPosts((prevState) => prevState.map(
+      post => (
+        post.id === postId
+          ? { ...post, removed: true }
+          : post
+      )
     ));
   }
 
