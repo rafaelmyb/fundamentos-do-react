@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 
 import App from './components/App';
 
-import GloalStyle from './styles/global';
+import GlobalStyle from './styles/global';
 
 ReactDOM.render(
   <>
-    <GloalStyle />
+    <GlobalStyle />
     <App />
   </>,
   document.getElementById('root'),

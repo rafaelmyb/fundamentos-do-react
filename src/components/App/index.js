@@ -5,6 +5,8 @@ import Header from '../Header';
 import Button from '../Button';
 import { ThemeProvider } from '../../context/ThemeProvider';
 
+import { Title } from './styles';
+
 function App() {
   const [posts, setPosts] = useState([
     { id: Math.random(), title: 'Titulo 01', subtitle: 'Subtitulo 01', likes: 20, read: false, removed: false },
@@ -38,10 +40,10 @@ function App() {
   return (
     <ThemeProvider>
       <Header>
-        <h2>
+        <Title as="h2">
           Posts da semana
           <Button onClick={handleRefresh}>Atualizar</Button>
-        </h2>
+        </Title>
       </Header>
 
       <hr />
