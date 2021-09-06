@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Container } from './styles';
 
-export default function Footer({ onToggleTheme, selectedTheme }) {
+import { useTheme } from '../../hooks/useTheme';
+
+export default function Footer() {
+  const { selectedTheme, onToggleTheme } = useTheme();
+
   return (
     <Container>
       <span>JStack's Blog. Todos os direitos reservados.</span>
